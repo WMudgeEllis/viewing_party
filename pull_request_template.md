@@ -1,1 +1,7 @@
-What did you do on this branch?
+What feature or bugs were fixed?
+
+What is the current test coverage?
+
+Are all tests passing?
+
+Did you make any new migrations?
