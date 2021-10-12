@@ -34,6 +34,6 @@ RSpec.describe 'new user registration page' do
     click_on 'Register'
 
     expect(current_path).to eq('/registration')
-    expect(page).to have_content('Please nsure that the passwords match')
+    expect(page).to have_content('Please ensure that the passwords match')
   end
 end
