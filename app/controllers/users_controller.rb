@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     elsif new_user.save
       session[:id] = new_user.id
       redirect_to '/dashboard'
+    else
+      flash[:error] = new_user.errors.full_messages.to_sentence
+      redirect_to '/registration'
     end
   end
 
