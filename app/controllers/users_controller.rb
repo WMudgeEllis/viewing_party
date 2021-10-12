@@ -6,7 +6,10 @@ class UsersController < ApplicationController
 
   def create
     new_user = User.new(user_params)
-    if new_user.save
+    if user_params[:password] != params[:user][:confirm_password]
+      flash[:error] = 'Please ensure that the passwords match'
+      redirect_to '/registration'
+    elsif new_user.save
       session[:id] = new_user.id
       redirect_to '/dashboard'
     end
