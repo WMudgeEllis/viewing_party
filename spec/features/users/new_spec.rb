@@ -16,7 +16,7 @@ RSpec.describe 'new user registration page' do
 
     user = User.last
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq('/dashboard')
     expect(page).to have_content("#{user.email}")
   end
 end
