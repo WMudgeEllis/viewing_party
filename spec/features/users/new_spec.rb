@@ -5,10 +5,11 @@ RSpec.describe 'new user registration page' do
   before(:each) do
     @email = 'funkypop@aol.com'
     @password = 'hunter1'
-  end
-  it 'can make a new user' do
-    visit '/registration'
 
+    visit '/registration'
+  end
+
+  it 'can make a new user' do
     #wtf, why did this happen?
     fill_in 'user[email]', with: @email
     fill_in 'user[password]', with: @password
@@ -19,12 +20,10 @@ RSpec.describe 'new user registration page' do
     user = User.last
 
     expect(current_path).to eq('/dashboard')
-    expect(page).to have_content("#{user.email}")
+    expect(page).to have_content(user.email)
   end
 
   it 'can confirm the passwords' do
-    visit '/registration'
-
     #wtf, why did this happen?
     fill_in 'user[email]', with: @email
     fill_in 'user[password]', with: @password
@@ -36,5 +35,16 @@ RSpec.describe 'new user registration page' do
     expect(page).to have_content('Please ensure that the passwords match')
   end
 
-  it ''
+  it 'can stop duplicate emails' do
+    User.create!(email: @email, password: 'throw away')
+
+    fill_in 'user[email]', with: @email
+    fill_in 'user[password]', with: @password
+    fill_in 'user[confirm_password]', with: @password
+
+    click_on 'Register'
+
+    expect(current_path).to eq('/registration')
+    expect(page).to have_content('Email has already been taken')
+  end
 end
