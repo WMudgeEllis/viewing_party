@@ -4,4 +4,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def create
+    new_user = User.new(user_params)
+    if new_user.save
+      session[:id] = new_user.id
+      redirect_to '/dashboard'
+    end
+  end
+
+  def show
+    @user = User.find(session[:id])
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
 end
