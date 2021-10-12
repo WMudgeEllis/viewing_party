@@ -2,16 +2,17 @@ require "rails_helper"
 
 RSpec.describe 'new user registration page' do
   it 'can make a new user' do
-    visit new_users_path
+    visit '/registration'
 
     email = 'funkypop@aol.com'
     password = 'hunter1'
 
-    fill_in user_email, with: email
-    fill_in user_password, with: password
-    fill_in user_password_confirmation, with: password
+    #wtf, why did this happen?
+    fill_in 'user[email]', with: email
+    fill_in 'user[password]', with: password
+    fill_in 'user[confirm_password]', with: password
 
-    click_on 'Create Account'
+    click_on 'Register'
 
     user = User.last
 
