@@ -1,16 +1,18 @@
 require "rails_helper"
 
 RSpec.describe 'new user registration page' do
+
+  before(:each) do
+    @email = 'funkypop@aol.com'
+    @password = 'hunter1'
+  end
   it 'can make a new user' do
     visit '/registration'
 
-    email = 'funkypop@aol.com'
-    password = 'hunter1'
-
     #wtf, why did this happen?
-    fill_in 'user[email]', with: email
-    fill_in 'user[password]', with: password
-    fill_in 'user[confirm_password]', with: password
+    fill_in 'user[email]', with: @email
+    fill_in 'user[password]', with: @password
+    fill_in 'user[confirm_password]', with: @password
 
     click_on 'Register'
 
@@ -23,17 +25,16 @@ RSpec.describe 'new user registration page' do
   it 'can confirm the passwords' do
     visit '/registration'
 
-    email = 'funkypop@aol.com'
-    password = 'hunter1'
-
     #wtf, why did this happen?
-    fill_in 'user[email]', with: email
-    fill_in 'user[password]', with: password
-    fill_in 'user[confirm_password]', with: 'hunter2'
+    fill_in 'user[email]', with: @email
+    fill_in 'user[password]', with: @password
+    fill_in 'user[confirm_password]', with: 'wrong password'
 
     click_on 'Register'
 
     expect(current_path).to eq('/registration')
     expect(page).to have_content('Please ensure that the passwords match')
   end
+
+  it ''
 end
