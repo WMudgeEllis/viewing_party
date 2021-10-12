@@ -1,6 +1,6 @@
 class Showing < ApplicationRecord
-  validates_presence_of :movie_title
-  validates_presence_of :duration
-  validates_presence_of :day
-  validates_presence_of :start_time
+  validates :movie_title, presence: true
+  validates :duration, presence: true
+  validates :day, presence: true
+  validates :start_time, presence: true
 end
