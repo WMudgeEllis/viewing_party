@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -8,14 +7,13 @@ class UsersController < ApplicationController
     new_user = User.new(user_params)
     if user_params[:password] != params[:user][:confirm_password]
       flash[:error] = 'Please ensure that the passwords match'
-      redirect_to '/registration'
     elsif new_user.save
       session[:id] = new_user.id
-      redirect_to '/dashboard'
+      return redirect_to '/dashboard'
     else
       flash[:error] = new_user.errors.full_messages.to_sentence
-      redirect_to '/registration'
     end
+    redirect_to '/registration'
   end
 
   def show
@@ -23,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:email, :password)
   end
