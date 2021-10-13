@@ -13,6 +13,9 @@
     <%= content_tag :div, msg, class: name %>
     <% end %>
     <main>
+      <% flash.each do |flash, msg| %>
+        <%= msg %>
+      <% end %>
       <%= yield %>
     </main>
     <footer>
