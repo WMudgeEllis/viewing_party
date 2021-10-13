@@ -5,18 +5,14 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(email: params[:email])
-    # require "pry"; binding.pry
     if user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = "Login Successful"
+      flash[:success] = 'Login Successful'
       redirect_to dashboard_path
     else
-      flash[:error] = "Invalid credentials. Please try again."
+      flash[:error] = 'Invalid credentials. Please try again.'
       redirect_to root_path
     end
-  end
-
-  def login_form
   end
 
   def create
@@ -41,6 +37,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password)
   end
-
-
 end

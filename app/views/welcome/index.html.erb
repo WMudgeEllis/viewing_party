@@ -1,14 +1,14 @@
 <h1>Viewing Party</h1>
 
-<h2><%= @welcome_message %></h2>
-<h2><%= @description %></h2>
+<h2>Welcome to viewing party! Be sure to grab some extra popcorn.</h2>
+<h2>Viewing party is an application that allows you to schedule showings with your friends or anyone you'd like. If you are new here be sure to register with us!<h2>
 
 <%= form_with url: login_path, method: :post, local: true do |form| %>
   <%= form.label :email, 'Email:' %>
   <%= form.text_field :email %>
 
   <%= form.label :password, 'Password:' %>
-  <%= form.text_field :password %>
+  <%= form.password_field :password %>
 
   <%= form.submit 'Login' %>
 <% end %>
