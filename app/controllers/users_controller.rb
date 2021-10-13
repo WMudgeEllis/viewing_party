@@ -5,10 +5,11 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(email: params[:email])
+    # require "pry"; binding.pry
     if user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Login Successful"
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       flash[:error] = "Invalid credentials. Please try again."
       render :login_form
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
     if user_params[:password] != params[:user][:confirm_password]
       flash[:error] = 'Please ensure that the passwords match'
     elsif new_user.save
-      session[:id] = new_user.id
+      session[:user_id] = new_user.id
       return redirect_to '/dashboard'
     else
       flash[:error] = new_user.errors.full_messages.to_sentence
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
   end
 
   private
