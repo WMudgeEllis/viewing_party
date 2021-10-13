@@ -32,4 +32,16 @@ RSpec.describe 'Welcome Page' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Login Successful")
   end
+
+  it 'does not allow user to login with invalid credentials' do
+    visit root_path
+
+    fill_in :email, with: @user.email
+    fill_in :password, with: "Yeet"
+
+    click_on  "Login"
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Invalid credentials. Please try again.")
+  end
 end
