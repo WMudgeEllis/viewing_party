@@ -36,7 +36,7 @@ RSpec.describe 'new user registration page' do
   end
 
   it 'can stop duplicate emails' do
-    User.create!(email: @email, password: 'throw away')
+    User.create!(email: @email, password: @password)
 
     fill_in 'user[email]', with: @email
     fill_in 'user[password]', with: @password
