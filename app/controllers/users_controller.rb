@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = "Invalid credentials. Please try again."
-      render :login_form
+      redirect_to root_path
     end
   end
 
