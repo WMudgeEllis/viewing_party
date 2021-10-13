@@ -6,7 +6,7 @@ RSpec.describe 'new user registration page' do
     @email = 'funkypop@aol.com'
     @password = 'hunter1'
 
-    visit '/registration'
+    visit registration_path
   end
 
   it 'can make a new user' do
@@ -19,7 +19,7 @@ RSpec.describe 'new user registration page' do
 
     user = User.last
 
-    expect(current_path).to eq('/dashboard')
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content(user.email)
   end
 
@@ -31,7 +31,7 @@ RSpec.describe 'new user registration page' do
 
     click_on 'Register'
 
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content('Please ensure that the passwords match')
   end
 
@@ -44,7 +44,7 @@ RSpec.describe 'new user registration page' do
 
     click_on 'Register'
 
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content('Email has already been taken')
   end
 end

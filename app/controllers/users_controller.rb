@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = new_user.errors.full_messages.to_sentence
     end
-    redirect_to '/registration'
+    redirect_to registration_path
   end
 
   def show
