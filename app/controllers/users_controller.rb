@@ -3,6 +3,21 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def login
+    user = User.find_by(email: params[:email])
+    if user.authenticate(params[:password])
+      session[:user_id] = user.id
+      flash[:success] = "Login Successful"
+      redirect_to root_path
+    else
+      flash[:error] = "Invalid credentials. Please try again."
+      render :login_form
+    end
+  end
+
+  def login_form
+  end
+
   def create
     new_user = User.new(user_params)
     if user_params[:password] != params[:user][:confirm_password]
@@ -25,4 +40,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password)
   end
+
+
 end
