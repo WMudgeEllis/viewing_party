@@ -3,18 +3,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def login
-    user = User.find_by(email: params[:email])
-    if user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:success] = 'Login Successful'
-      redirect_to dashboard_path
-    else
-      flash[:error] = 'Invalid credentials. Please try again.'
-      redirect_to root_path
-    end
-  end
-
   def create
     new_user = User.new(user_params)
     if user_params[:password] != params[:user][:confirm_password]
