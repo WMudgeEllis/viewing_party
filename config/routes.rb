@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "welcome#index"
   resources :users
   post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/registration', to: 'users#new'
   get '/dashboard', to:'users#show'
 end
