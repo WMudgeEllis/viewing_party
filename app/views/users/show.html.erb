@@ -27,6 +27,11 @@
       <p><%= showing.day %></p>
       <p><%= showing.start_time %></p>
       <p>Host: <%= showing.host %></p>
+      <section id="showing-<%= showing.id %>-invited">
+        <% showing.invitees.each do|invitee| %>
+          <%= invitee.email %>
+        <% end %>
+      </section>
     </section>
   <% end %>
 </section>
