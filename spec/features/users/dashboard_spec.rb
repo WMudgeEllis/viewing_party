@@ -142,7 +142,15 @@ RSpec.describe 'user dashboard page' do
         expect(page).to have_content(@user2.email)
         expect(page).to have_content(@user3.email)
       end
+    end
 
+    it 'bolds my email when I am invited' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+      UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
+      UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
+      UserShowing.create!(user: @user3, showing: @showing, user_hosting: false)
+
+      #dont know how to write the expect page
     end
   end
 end

@@ -29,7 +29,11 @@
       <p>Host: <%= showing.host %></p>
       <section id="showing-<%= showing.id %>-invited">
         <% showing.invitees.each do|invitee| %>
-          <%= invitee.email %>
+          <% if invitee.email == current_user.email %>
+            <b><%= invitee.email %></b>
+          <% else %>
+            <%= invitee.email %>
+          <% end %>
         <% end %>
       </section>
     </section>
