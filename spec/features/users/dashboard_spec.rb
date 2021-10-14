@@ -94,16 +94,14 @@ RSpec.describe 'user dashboard page' do
       @user4 = User.create!(email: 'wakefull@dud.com', password: 'coffee')
       @showing = Showing.create!(movie_title: 'star warz', duration: 120, day: '1/2/1993', start_time: '1800')
       @showing2 = Showing.create!(movie_title: 'return of the star warz', duration: 120, day: '3/9/2018', start_time: '0800')
-      @user.friendships.create!(friend_id: @user2.id)
-      @user.friendships.create!(friend_id: @user3.id)
-      @user4.friendships.create!(friend_id: @user.id)
     end
 
     it 'can show all viewing parties invited' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
       UserShowing.create!(user: @user, showing: @showing2, user_hosting: false)
-
+      UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
+      UserShowing.create!(user: @user2, showing: @showing2, user_hosting: true)
       visit dashboard_path
 
       expect(page).to have_content(@showing.movie_title)
@@ -118,7 +116,7 @@ RSpec.describe 'user dashboard page' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
       UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
-      UserShowing.create!(user: @user, showing: @showing2, user_hosting: false)
+      UserShowing.create!(user: @user, showing: @showing2, user_hosting: true)
 
       visit dashboard_path
 
