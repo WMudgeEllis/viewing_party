@@ -58,12 +58,30 @@ RSpec.describe 'user dashboard page' do
 
     expect(page).to have_content(message)
   end
-  
+
   it 'makes sure only authenticated users can access dashboard' do
     visit dashboard_path
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content('please log in or create an account')
+  end
+
+  it 'can fail to find a friend' do
+    visit root_path
+
+    fill_in :email, with: @user.email
+    fill_in :password, with: @user.password
+
+    click_on  "Login"
+
+    fill_in :find_friend, with: 'nofriend@sad.com'
+
+    click_button 'Add'
+
+    @user.reload
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content('User does not exist')
+    expect(@user.friends).to eq([])
   end
 
 end
