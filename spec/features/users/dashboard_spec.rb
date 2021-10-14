@@ -45,4 +45,16 @@ RSpec.describe 'user dashboard page' do
 
   end
 
+  it 'shows message when friends list is empty' do
+    message = "You don't have any friends. Add one!"
+    visit root_path
+
+    fill_in :email, with: @user.email
+    fill_in :password, with: @user.password
+
+    click_on  "Login"
+
+    expect(page).to have_content(message)
+  end
+
 end
