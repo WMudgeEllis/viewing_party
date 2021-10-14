@@ -6,4 +6,10 @@ class Showing < ApplicationRecord
   validates :duration, presence: true
   validates :day, presence: true
   validates :start_time, presence: true
+
+
+
+  def host
+    users.find_by(user_showings: {user_hosting: true}).email
+  end
 end
