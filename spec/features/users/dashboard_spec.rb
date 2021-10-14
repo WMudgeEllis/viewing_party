@@ -114,5 +114,22 @@ RSpec.describe 'user dashboard page' do
       expect(page).to have_content(@showing2.start_time)
     end
 
+    it 'can show host of party' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+      UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
+      UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
+      UserShowing.create!(user: @user, showing: @showing2, user_hosting: false)
+
+      visit dashboard_path
+
+      within("#showing-#{@showing.id}") do
+        expect(page).to have_content("Host: #{@user2.email}")
+      end
+
+      within("#showing-#{@showing2.id}") do
+        expect(page).to have_content("Host: #{@user.email}")
+      end
+
+    end
   end
 end
