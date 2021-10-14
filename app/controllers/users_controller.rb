@@ -17,10 +17,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    remove_visitor
   end
 
   private
+
+  def remove_visitor
+    if session[:user_id] == nil
+      redirect_to root_path
+      flash[:error] = 'please log in or create an account'
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :password)
