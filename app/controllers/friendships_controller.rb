@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
   def create
     friend = User.find_by(email: params[:find_friend])
-    user = User.find(session[:user_id])
+    user = User.find(current_user.id)
     if friend
       user.friendships.create(friend_id: friend.id)
     else
