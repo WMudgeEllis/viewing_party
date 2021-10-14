@@ -1,2 +1,20 @@
 <h1>Welcome <%= current_user.email %>!</h1>
 <%= link_to "Log Out", logout_path, method: :delete %>
+
+<section id= 'friend-search'>
+  <%= form_with url: friendships_path, local: true do |form| %>
+    <%= form.label :find_friend, 'Find Friend' %>
+    <%= form.text_field :find_friend %>
+
+    <%= form.submit "Add" %>
+  <% end %>
+</section>
+
+<h3>Friends:</h3>
+<% if @user.friends == [] %>
+<p><%= "You don't have any friends. Add one!" %></p>
+<% end  %>
+
+<% @user.friends.each do |friend| %>
+  <%= friend.email %>
+<% end %>
