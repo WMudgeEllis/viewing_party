@@ -1,2 +1,11 @@
 <h1>Welcome <%= @user.email %>!</h1>
 <%= link_to "Log Out", logout_path, method: :delete %>
+
+<section id= 'friend-search'>
+  <%= form_with url: friendships_path, local: true do |form| %>
+    <%= form.label :find_friend, 'Find Friend' %>
+    <%= form.text_field :find_friend %>
+
+    <%= form.submit "Add" %>
+  <% end %>
+</section>
