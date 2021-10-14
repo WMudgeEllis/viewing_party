@@ -18,3 +18,11 @@
 <% current_user.friends.each do |friend| %>
   <%= friend.email %>
 <% end %>
+
+<section id='showings'>
+  <% current_user.showings.each do |showing| %>
+    <%= showing.movie_title %>
+    <%= showing.day %>
+    <%= showing.start_time %>
+  <% end %>
+</section>
