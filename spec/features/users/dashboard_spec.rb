@@ -39,7 +39,8 @@ RSpec.describe 'user dashboard page' do
       click_button "Add"
     end
 
-    #expect(@user.friends).to eq([@user2])
+    @user.reload
+    expect(@user.friends).to eq([@user2])
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content(@user2.email)
 
