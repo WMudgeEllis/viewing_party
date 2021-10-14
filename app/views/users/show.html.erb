@@ -9,3 +9,7 @@
     <%= form.submit "Add" %>
   <% end %>
 </section>
+
+<% @user.friends.each do |friend| %>
+  <%= friend.email %>
+<% end %>
