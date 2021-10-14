@@ -17,12 +17,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    remove_visitor
+    require_user
   end
 
   private
 
-  def remove_visitor
+  def require_user
     if session[:user_id] == nil
       redirect_to root_path
       flash[:error] = 'please log in or create an account'
