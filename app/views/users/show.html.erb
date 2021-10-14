@@ -16,13 +16,17 @@
 <% end  %>
 
 <% current_user.friends.each do |friend| %>
-  <%= friend.email %>
+  <p><%= friend.email %></p>
 <% end %>
 
 <section id='showings'>
+  <h3>Viewing Parties</h3>
   <% current_user.showings.each do |showing| %>
-    <%= showing.movie_title %>
-    <%= showing.day %>
-    <%= showing.start_time %>
+    <section id="showing-<%= showing.id %>">
+      <p><%= showing.movie_title %></p>
+      <p><%= showing.day %></p>
+      <p><%= showing.start_time %></p>
+      <p>Host: <%= showing.host %></p>
+    </section>
   <% end %>
 </section>
