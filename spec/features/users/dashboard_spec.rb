@@ -4,6 +4,7 @@ RSpec.describe 'user dashboard page' do
 
   before :each do
     @user = User.create!(email: "sunlesskhan", password: "flipreset")
+    @user2 = User.create!(email: "scar", password: "face")
   end
 
   it 'can log out' do
@@ -20,6 +21,28 @@ RSpec.describe 'user dashboard page' do
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content('You have been logged out')
+  end
+
+  it 'can find a friend' do
+    visit root_path
+
+    fill_in :email, with: @user.email
+    fill_in :password, with: @user.password
+
+    click_on  "Login"
+
+    expect(page).to_not have_content(@user2.email)
+    expect(@user.friends).to eq([])
+
+    within('#friend-search') do
+      fill_in :find_friend, with: @user2.email
+      click_button "Add"
+    end
+
+    expect(@user.friends).to eq([@user2])
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content(@user2.email)
+
   end
 
 end
