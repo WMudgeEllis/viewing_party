@@ -6,6 +6,6 @@ RSpec.describe UserShowing do
     it {should belong_to(:showing)}
   end
   describe 'validations' do
-    it {should validate_presence_of(:user_hosting)}
+    it {should validate_exclusion_of(:user_hosting).in_array([nil])}
   end
 end
