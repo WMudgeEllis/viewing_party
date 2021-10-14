@@ -22,4 +22,11 @@ RSpec.describe 'user dashboard page' do
     expect(page).to have_content('You have been logged out')
   end
 
+  it 'makes sure only authenticated users can access dashboard' do
+    visit dashboard_path
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content('please log in or create an account')
+  end
+
 end
