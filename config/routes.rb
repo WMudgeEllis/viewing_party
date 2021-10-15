@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get '/registration', to: 'users#new'
   get '/dashboard', to:'users#show'
   post '/friendships', to: 'friendships#create'
+
+  get '/discover', to: 'discovers#show'
+
+  resources :movies, only: [:index, :show]
 end
