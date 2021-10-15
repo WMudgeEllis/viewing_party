@@ -19,7 +19,7 @@ RSpec.describe Movie do
 
     expect(movie.genres).to eq([{id: 123, name: 'Documentary'}])
     expect(movie.title).to eq('Hola')
-    expect(movie.summary).to eq('12345')
+    expect(movie.overview).to eq('12345')
     expect(movie.vote_average).to eq(1.3)
     expect(movie.format_runtime).to eq('2:10')
   end
