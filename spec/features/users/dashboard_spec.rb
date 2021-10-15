@@ -26,12 +26,9 @@ RSpec.describe 'user dashboard page' do
 
 
     it 'can find a friend' do
-      visit root_path
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
-      fill_in :email, with: @user.email
-      fill_in :password, with: @user.password
-
-      click_on  "Login"
+      visit dashboard_path
 
       expect(page).to_not have_content(@user2.email)
       expect(@user.friends).to eq([])
@@ -42,6 +39,7 @@ RSpec.describe 'user dashboard page' do
       end
 
       @user.reload
+      refresh
       expect(@user.friends).to eq([@user2])
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content(@user2.email)
@@ -49,13 +47,10 @@ RSpec.describe 'user dashboard page' do
     end
 
     it 'shows message when friends list is empty' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       message = "You don't have any friends. Add one!"
-      visit root_path
 
-      fill_in :email, with: @user.email
-      fill_in :password, with: @user.password
-
-      click_on  "Login"
+      visit dashboard_path
 
       expect(page).to have_content(message)
     end
@@ -68,12 +63,9 @@ RSpec.describe 'user dashboard page' do
     end
 
     it 'can fail to find a friend' do
-      visit root_path
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
-      fill_in :email, with: @user.email
-      fill_in :password, with: @user.password
-
-      click_on  "Login"
+      visit dashboard_path
 
       fill_in :find_friend, with: 'nofriend@sad.com'
 
@@ -94,10 +86,10 @@ RSpec.describe 'user dashboard page' do
       @user4 = User.create!(email: 'wakefull@dud.com', password: 'coffee')
       @showing = Showing.create!(movie_title: 'star warz', duration: 120, day: '1/2/1993', start_time: '1800')
       @showing2 = Showing.create!(movie_title: 'return of the star warz', duration: 120, day: '3/9/2018', start_time: '0800')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
     it 'can show all viewing parties invited' do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
       UserShowing.create!(user: @user, showing: @showing2, user_hosting: false)
       UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
@@ -113,7 +105,6 @@ RSpec.describe 'user dashboard page' do
     end
 
     it 'can show host of party' do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
       UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
       UserShowing.create!(user: @user, showing: @showing2, user_hosting: true)
@@ -130,7 +121,6 @@ RSpec.describe 'user dashboard page' do
     end
 
     it 'can show invited users' do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       UserShowing.create!(user: @user, showing: @showing, user_hosting: true)
       UserShowing.create!(user: @user2, showing: @showing, user_hosting: false)
       UserShowing.create!(user: @user3, showing: @showing, user_hosting: false)
@@ -145,7 +135,6 @@ RSpec.describe 'user dashboard page' do
     end
 
     it 'bolds my email when I am invited' do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
       UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
       UserShowing.create!(user: @user3, showing: @showing, user_hosting: false)
