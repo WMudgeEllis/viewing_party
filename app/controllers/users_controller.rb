@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   private
 
   def require_user
-    if session[:user_id] == nil
+    if current_user.nil?
       redirect_to root_path
       flash[:error] = 'please log in or create an account'
     end
