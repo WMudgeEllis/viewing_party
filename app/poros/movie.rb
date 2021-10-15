@@ -6,7 +6,11 @@ class Movie
     @title = data[:title]
     @vote_average = data[:vote_average]
     @summary = data[:summary]
+    @runtime = data[:runtime]
   end
 
+  def format_runtime
+    "#{@runtime/60}:#{@runtime%60}"
+  end
 
 end
