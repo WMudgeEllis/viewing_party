@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/discover', to: 'discovers#show'
 
   resources :movies, only: [:index, :show]
+  resources :showings, only: [:new, :create]
 end
