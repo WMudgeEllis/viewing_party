@@ -13,7 +13,7 @@ RSpec.describe Movie do
       title: 'Hola',
       vote_average: 1.3,
       runtime: 130,
-      summary: '12345'
+      overview: '12345'
     }
     movie = Movie.new(data)
 
