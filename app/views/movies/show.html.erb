@@ -1,1 +1,12 @@
 <%= button_to 'Create Viewing Party', new_showing_path, method: :get %>
+
+<section id='movie_info'>
+  <p><%= @movie.title %></p>
+  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Runtime: <%= @movie.format_runtime %></p>
+  <p>Genres: <% @movie.genres.each do |genre| %>
+    <%= genre[:name] %>,
+  <% end %></p>
+  <p><%= @movie.overview %></p>
+
+</section>

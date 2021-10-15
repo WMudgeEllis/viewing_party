@@ -5,7 +5,7 @@ class Movie
     @genres = data[:genres]
     @title = data[:title]
     @vote_average = data[:vote_average]
-    @overview = data[:summary]
+    @overview = data[:overview]
     @runtime = data[:runtime]
   end
 
