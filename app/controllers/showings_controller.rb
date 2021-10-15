@@ -1,4 +1,5 @@
 class ShowingsController < ApplicationController
+  before_action :require_user
 
-def new; end
+  def new; end
 end

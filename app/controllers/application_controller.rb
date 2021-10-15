@@ -5,4 +5,11 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find(session[:user_id]) if session[:user_id]
   end
+
+  def require_user
+    if current_user.nil?
+      redirect_to root_path
+      flash[:error] = 'please log in or create an account'
+    end
+  end
 end

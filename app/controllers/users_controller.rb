@@ -22,13 +22,6 @@ class UsersController < ApplicationController
 
   private
 
-  def require_user
-    if current_user.nil?
-      redirect_to root_path
-      flash[:error] = 'please log in or create an account'
-    end
-  end
-
   def user_params
     params.require(:user).permit(:email, :password)
   end
