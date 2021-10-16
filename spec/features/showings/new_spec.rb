@@ -18,7 +18,7 @@ RSpec.describe 'new showing page' do
     expect(page).to have_content(@user3.email)
   end
 
-  it 'cant create a showing without friends', :vcr do
+  it 'can create a showing without friends', :vcr do
     fill_in 'showing[day]', with: '1/3/1993'
     fill_in 'showing[start_time]', with: '1800'
 
@@ -27,4 +27,19 @@ RSpec.describe 'new showing page' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('March of the Penguins')
   end
+
+  it 'can create a showing with friends', :vcr do
+    fill_in 'showing[day]', with: '1/3/1993'
+    fill_in 'showing[start_time]', with: '1800'
+    expect(@user2.showings).to eq([])
+
+    page.check(@user2.email)
+
+    click_button 'Create'
+
+    @user2.reload
+    expect(page).to have_content(@user2.email)
+    expect(@user2.showings).to_not eq([])
+  end
+
 end
