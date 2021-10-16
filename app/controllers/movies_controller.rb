@@ -6,5 +6,6 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.new(MovieService.movie_info(params[:id]))
     @cast = CastService.first_10_cast(params[:id])
+    @reviews = ReviewService.reviews(params[:id])
   end
 end

@@ -12,7 +12,17 @@
 
 <section id='cast_info'>
   <% @cast.each do |cast_member| %>
-    <%= "#{cast_member.name} / #{cast_member.character}" %>
+    <p><%= "#{cast_member.name} / #{cast_member.character}" %></p>
+  <% end %>
+</section>
 
+<section id='reviews'>
+  <p>Number of reviews: <%= @reviews.length %></p>
+  <% if @reviews.length == 0 %>
+    <%= "No reviews" %>
+  <% end %>
+  <% @reviews.each do |review| %>
+    <p>Author: <%= review.author %></p>
+    <p><%= review.content %> %></p>
   <% end %>
 </section>
