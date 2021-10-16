@@ -31,7 +31,7 @@ RSpec.describe 'movie show page' do
   end
 
   it 'has cast information', :vcr do
-    expect(page).to have_content('Morgan Freeman/Narrator')
-    expect(page).to have_content('Charles Berling/Father Penguin (french voice)')
+    expect(page).to have_content('Morgan Freeman / Narrator')
+    expect(page).to have_content('Charles Berling / Father Penguin (french voice)')
   end
 end
