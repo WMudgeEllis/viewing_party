@@ -9,9 +9,11 @@ class ShowingsController < ApplicationController
 
   def create
     new_showing = Showing.new(showing_params)
+    friends = params.keys.filter_map { |key| User.find_by(email: key) }
 
     if new_showing.save
       current_user.user_showings.create!(showing: new_showing, user_hosting: true)
+      friends.each { |friend| friend.user_showings.create!(showing: new_showing, user_hosting: false) }
       redirect_to dashboard_path
     end
 

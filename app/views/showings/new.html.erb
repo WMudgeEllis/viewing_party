@@ -11,8 +11,8 @@
   <%= form.text_field :start_time %></p>
 
   <p><% @friends.each do |friend| %>
-    <%= check_box_tag friend.email.to_s %>
-    <%= label_tag friend.email.to_s, "#{friend.email}" %>
+    <%= check_box_tag friend.email %>
+    <%= label_tag friend.email, "#{friend.email}" %>
   <% end %></p>
 
   <%= form.submit 'Create' %>
