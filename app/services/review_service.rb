@@ -1,8 +1,6 @@
-class ReviewService
-  URL = 'https://api.themoviedb.org/3/movie/'
-
+class ReviewService < Service
   def self.reviews(movie_id)
-    parse_json(movie_id)[:results].map { |review| Review.new(review) } 
+    parse_json(movie_id)[:results].map { |review| Review.new(review) }
   end
 
   def self.parse_json(movie_id)
