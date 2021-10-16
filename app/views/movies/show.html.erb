@@ -8,5 +8,11 @@
     <%= genre[:name] %>,
   <% end %></p>
   <p><%= @movie.overview %></p>
+</section>
 
+<section id='cast_info'>
+  <% @cast.each do |cast_member| %>
+    <%= "#{cast_member.name} / #{cast_member.character}" %>
+
+  <% end %>
 </section>
