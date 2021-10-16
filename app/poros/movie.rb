@@ -10,7 +10,6 @@ class Movie
   end
 
   def format_runtime
-    "#{@runtime/60}:#{@runtime%60}"
+    "#{@runtime / 60}:#{@runtime % 60}"
   end
-
 end
