@@ -26,8 +26,16 @@ RSpec.describe 'movie show page' do
   end
 
   it 'has reviews', :vcr do
-    expect(page).to have_content('Number of reviews: 0')
+    expect(page).to have_content('Number of Reviews: 0')
     expect(page).to have_content('No reviews')
+  end
+
+  it 'actually has reviews', :vcr do
+    visit '/movies/238'
+
+    expect(page).to have_content('Number of Reviews: 1')
+    expect(page).to have_content('futuretv')
+    expect(page).to have_content('The Godfather Review')
   end
 
   it 'has cast information', :vcr do
