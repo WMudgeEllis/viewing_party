@@ -1,0 +1,19 @@
+<%= @movie.title %>
+
+
+<%= form_with model: @showing, local: true do |form|%>
+  <p><%= form.label :duration, 'Duration' %>
+  <%= form.number_field :duration, value: @movie.runtime %></p>
+  <p><%= form.label :day, 'Day' %>
+  <%= form.text_field :day %></p>
+  <p><%= form.label :start_time, 'Start Time' %>
+  <%= form.text_field :start_time %></p>
+
+  <p><% @friends.each do |friend| %>
+    <%= check_box_tag friend.email.to_s %>
+    <%= label_tag friend.email.to_s, "#{friend.email}" %>
+  <% end %></p>
+
+  <%= form.submit 'Create' %>
+
+<% end %>
