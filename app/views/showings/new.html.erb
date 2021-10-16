@@ -2,6 +2,7 @@
 
 
 <%= form_with model: @showing, local: true do |form|%>
+  <%= form.hidden_field :movie_title, value: @movie.title %>
   <p><%= form.label :duration, 'Duration' %>
   <%= form.number_field :duration, value: @movie.runtime %></p>
   <p><%= form.label :day, 'Day' %>
