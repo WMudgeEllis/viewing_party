@@ -4,7 +4,7 @@
 <%= form_with model: @showing, local: true do |form|%>
   <%= form.hidden_field :movie_title, value: @movie.title %>
   <p><%= form.label :duration, 'Duration' %>
-  <%= form.number_field :duration, value: @movie.runtime %></p>
+  <%= form.number_field :duration, value: @movie.runtime, min: 80 %></p>
   <p><%= form.label :day, 'Day' %>
   <%= form.text_field :day %></p>
   <p><%= form.label :start_time, 'Start Time' %>
