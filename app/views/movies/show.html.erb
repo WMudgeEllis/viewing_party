@@ -1,0 +1,33 @@
+<%= form_with url: new_showing_path, method: :get, local: true do |form| %>
+  <%= form.hidden_field :title, value: @movie.title %>
+  <%= form.hidden_field :runtime, value: @movie.runtime %>
+  <%= form.submit 'Create Viewing Party' %>
+<% end %>
+
+
+<section id='movie_info'>
+  <p><%= @movie.title %></p>
+  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Runtime: <%= @movie.format_runtime %></p>
+  <p>Genres: <% @movie.genres.each do |genre| %>
+    <%= genre[:name] %>,
+  <% end %></p>
+  <p><%= @movie.overview %></p>
+</section>
+
+<section id='cast_info'>
+  <% @cast.each do |cast_member| %>
+    <p><%= "#{cast_member.name} / #{cast_member.character}" %></p>
+  <% end %>
+</section>
+
+<section id='reviews'>
+  <p>Number of Reviews: <%= @reviews.length %></p>
+  <% if @reviews.length == 0 %>
+    <%= "No reviews" %>
+  <% end %>
+  <% @reviews.each do |review| %>
+    <p>Author: <%= review.author %></p>
+    <p><%= review.content %> %></p>
+  <% end %>
+</section>

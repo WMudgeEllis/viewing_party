@@ -7,13 +7,11 @@ class Showing < ApplicationRecord
   validates :day, presence: true
   validates :start_time, presence: true
 
-
-
   def host
-    users.find_by(user_showings: {user_hosting: true}).email
+    users.find_by(user_showings: { user_hosting: true }).email
   end
 
   def invitees
-    users.where(user_showings: {user_hosting: false})
+    users.where(user_showings: { user_hosting: false })
   end
 end
