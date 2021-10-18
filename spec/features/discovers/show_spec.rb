@@ -7,6 +7,10 @@ RSpec.describe 'discover page' do
     visit discover_path
   end
 
+  it 'renders page with no error', :vcr do
+    expect(page.status_code).to eq(200)
+  end
+
   it 'shows a button to go to the movies page' do
     expect(page).to have_button("Find Top Rated Movies")
     click_button("Find Top Rated Movies")
