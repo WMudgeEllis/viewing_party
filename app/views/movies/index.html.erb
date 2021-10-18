@@ -7,6 +7,6 @@
 
 <% if @movies %>
 <% @movies.each do |movie| %>
-  <p><b>Title: </b><%= link_to movie.title, movie_path(movie) %> <b>Rating: </b> <%= movie.vote_average %></p>
+  <p><b>Title: </b><%= link_to movie.title, "/movies/#{movie.id}" %> <b>Rating: </b> <%= movie.vote_average %></p>
 <% end %>
 <% end %>
