@@ -141,5 +141,18 @@ RSpec.describe 'user dashboard page' do
 
       #dont know how to write the expect page
     end
+
+    it 'has a button to go to discover movies page' do
+      visit root_path
+
+      fill_in :email, with: @user.email
+      fill_in :password, with: @user.password
+
+      click_on  "Login"
+
+      click_on "Discover Movies"
+
+      expect(current_path).to eq(discover_path)
+    end
   end
 end
