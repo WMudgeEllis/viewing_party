@@ -3,9 +3,12 @@ require "rails_helper"
 RSpec.describe CastService do
 
   it 'can make cast members', :vcr do
-    expect(CastService.first_10_cast('238')).to be_a(Array)
-    expect(CastService.first_10_cast('238').length).to eq(10)
-    expect(CastService.first_10_cast('238').first).to be_a(CastMember)
+    expect(CastService.cast_info('238')[:cast]).to be_a(Array)
+    expect(CastService.cast_info('238')[:cast].first).to be_a(Hash)
+    expect(CastService.cast_info('238')[:cast].first).to have_key(:name)
+    expect(CastService.cast_info('238')[:cast].first[:name]).to be_a(String)
+    expect(CastService.cast_info('238')[:cast].first).to have_key(:character)
+    expect(CastService.cast_info('238')[:cast].first[:character]).to be_a(String)
   end
 
 end

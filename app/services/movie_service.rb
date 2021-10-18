@@ -21,6 +21,6 @@ class MovieService < Service
   # end
   def self.movie_info(movie_id)
     response = Faraday.get(URL + movie_id, { api_key: ENV['movie_key'] })
-    JSON.parse(response.body, symbolize_names: true)
+    json_parse(response)
   end
 end
