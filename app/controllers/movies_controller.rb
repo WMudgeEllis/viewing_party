@@ -2,8 +2,9 @@ class MoviesController < ApplicationController
   before_action :require_user
 
   def index
+    #logic to display one outcome 
     if params[:query].present?
-      @search = APIS::MoviesFacade.search_by_title(params[:query])
+      @search = APIS::MoviesFacade.search_by_title(params[:id])
     elsif params[:query].nil?
       @movies = APIS::MoviesFacade.top_40_movies
     end

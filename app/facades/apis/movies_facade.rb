@@ -3,7 +3,7 @@ module APIS
     def self.top_40_movies
       movies = MovieService.top_40_movies
 
-      movies[:results].map do |movie|
+      movies.map do |movie|
         Movie.new(movie)
       end
     end

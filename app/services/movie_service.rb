@@ -1,4 +1,4 @@
-class MovieService 
+class MovieService
   def self.get_top_rated_movies(page)
     response = conn.get("/3/movie/top_rated") do |f|
       f.params['page'] = page
@@ -6,6 +6,7 @@ class MovieService
     parse_json(response)[:results]
   end
 
+#facade?
   def self.top_40_movies
     get_top_rated_movies(1) + get_top_rated_movies(2)
   end
