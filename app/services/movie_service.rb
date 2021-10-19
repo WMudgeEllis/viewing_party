@@ -7,7 +7,7 @@ class MovieService < APIService
   end
 
   def self.search_movie_by_title(title)
-    response = conn.get("/3/search/movie") do |f|
+    response = conn.get('/3/search/movie') do |f|
       f.params['query'] = title
     end
     parse_json(response)

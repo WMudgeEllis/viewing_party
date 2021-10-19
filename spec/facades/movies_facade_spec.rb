@@ -19,6 +19,7 @@ RSpec.describe MoviesFacade do
 
   it 'can get top_40_movies', :vcr do
     result = MoviesFacade.top_40_movies
+    
     expect(result).to be_a(Array)
     expect(result.first).to be_a(Movie)
   end
