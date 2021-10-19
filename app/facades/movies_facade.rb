@@ -19,7 +19,7 @@ class MoviesFacade
     service = MovieService.search_movie_by_title(title)
 
     service[:results].map do |movie|
-      MovieResult.new(movie)
+      Movie.new(movie)
     end
   end
 end

@@ -13,7 +13,7 @@ class ShowingsController < ApplicationController
     if showing_params[:duration] < params[:showing][:movie_runtime]
       flash[:error] = "Party duration can't be less than the movie runtime"
     elsif new_showing.save
-      create_showings(new_showing, friends)
+      create_user_showings(new_showing, friends)
     else
       flash[:error] = 'Oops, something went wrong, please try again'
     end
@@ -22,7 +22,7 @@ class ShowingsController < ApplicationController
 
   private
 
-  def create_showings(new_showing, friends)
+  def create_user_showings(new_showing, friends)
     current_user.user_showings.create!(showing: new_showing, user_hosting: true)
     friends.each { |friend| friend.user_showings.create!(showing: new_showing, user_hosting: false) }
     flash[:alert] = 'Your viewing party has been created!'
