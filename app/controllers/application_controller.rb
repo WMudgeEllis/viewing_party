@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
       flash[:error] = 'please log in or create an account'
     end
   end
+
+  def dashboard_redirect
+    redirect_to dashboard_path if current_user
+  end
 end
