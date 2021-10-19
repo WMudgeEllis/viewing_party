@@ -11,14 +11,14 @@ RSpec.describe Showing do
     it {should validate_presence_of(:day)}
     it {should validate_presence_of(:start_time)}
     it {should validate_presence_of(:movie_id)}
-    
+
   end
 
   before :each do
     @user = User.create!(email: "sunlesskhan@kahn.com", password: "flipreset")
     @user2 = User.create!(email: "scar@sa.net", password: "face")
     @user3 = User.create!(email: "balderdash@yada.com", password: "123")
-    @showing = Showing.create!(movie_title: 'star warz', duration: 120, day: '1/2/1993', start_time: '1800')
+    @showing = Showing.create!(movie_title: 'star warz', duration: 120, day: '1/2/1993', start_time: '1800', movie_id: 123)
     UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
     UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
     UserShowing.create!(user: @user3, showing: @showing, user_hosting: false)

@@ -84,8 +84,8 @@ RSpec.describe 'user dashboard page' do
       @user2 = User.create!(email: "scar@sa.net", password: "face")
       @user3 = User.create!(email: 'sleeps@zz.com', password: 'yawn')
       @user4 = User.create!(email: 'wakefull@dud.com', password: 'coffee')
-      @showing = Showing.create!(movie_title: 'star warz', duration: 120, day: '1/2/1993', start_time: '1800')
-      @showing2 = Showing.create!(movie_title: 'return of the star warz', duration: 120, day: '3/9/2018', start_time: '0800')
+      @showing = Showing.create!(movie_title: 'star warz', duration: 120, day: '1/2/1993', start_time: '1800', movie_id: 1667)
+      @showing2 = Showing.create!(movie_title: 'return of the star warz', duration: 120, day: '3/9/2018', start_time: '0800', movie_id: 238)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
@@ -134,10 +134,8 @@ RSpec.describe 'user dashboard page' do
       end
     end
 
-    it 'bolds my email when I am invited' do
+    it 'links to movie show page' do
       UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
-      UserShowing.create!(user: @user2, showing: @showing, user_hosting: true)
-      UserShowing.create!(user: @user3, showing: @showing, user_hosting: false)
 
       #dont know how to write the expect page
     end
