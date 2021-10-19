@@ -1,10 +1,6 @@
 class ReviewService < Service
-  def self.reviews(movie_id)
-    parse_json(movie_id)[:results].map { |review| Review.new(review) }
-  end
-
-  def self.parse_json(movie_id)
+  def self.review_info(movie_id)
     response = Faraday.get("#{URL + movie_id}/reviews", { api_key: ENV['movie_key'] })
-    JSON.parse(response.body, symbolize_names: true)
+    json_parse(response)
   end
 end

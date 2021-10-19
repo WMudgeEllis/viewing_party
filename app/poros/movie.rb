@@ -1,5 +1,5 @@
 class Movie
-  attr_reader :genres, :title, :vote_average, :overview, :runtime
+  attr_reader :genres, :title, :vote_average, :overview, :runtime, :id
 
   def initialize(data)
     @genres = data[:genres]
@@ -7,6 +7,7 @@ class Movie
     @vote_average = data[:vote_average]
     @overview = data[:overview]
     @runtime = data[:runtime]
+    @id = data[:id]
   end
 
   def format_runtime

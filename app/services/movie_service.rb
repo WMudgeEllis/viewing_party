@@ -1,4 +1,10 @@
 class MovieService < Service
+
+  def self.movie_info(movie_id)
+    response = Faraday.get(URL + movie_id, { api_key: ENV['movie_key'] })
+    json_parse(response)
+  end
+
   def self.get_top_rated_movies(page)
     response = conn.get("/3/movie/top_rated") do |f|
       f.params['page'] = page

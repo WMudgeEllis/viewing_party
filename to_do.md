@@ -1,4 +1,4 @@
-
+1. fixtures for movie data test
 2. change movie name to a link on dashboard (after we figure out the path)
 
 questions:

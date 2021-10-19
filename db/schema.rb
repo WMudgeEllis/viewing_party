@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_185505) do
+ActiveRecord::Schema.define(version: 2021_10_18_235358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_185505) do
     t.integer "duration"
     t.string "day"
     t.string "start_time"
+    t.integer "movie_id"
   end
 
   create_table "user_showings", force: :cascade do |t|
