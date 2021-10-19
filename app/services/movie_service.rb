@@ -1,3 +1,5 @@
+require "faraday"
+
 class MovieService < APIService
   def self.get_top_rated_movies(page)
     response = conn.get('/3/movie/top_rated') do |f|
