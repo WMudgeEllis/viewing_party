@@ -24,7 +24,9 @@ class ShowingsController < ApplicationController
 
   def create_user_showings(new_showing, friends)
     current_user.user_showings.create!(showing: new_showing, user_hosting: true)
-    friends.each { |friend| friend.user_showings.create!(showing: new_showing, user_hosting: false) }
+    friends.each do |friend|
+      friend.user_showings.create!(showing: new_showing, user_hosting: false)
+    end
     flash[:alert] = 'Your viewing party has been created!'
   end
 
