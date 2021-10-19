@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
   before_action :require_user
 
   def index
-    # logic to display one outcome
     @movies = if params[:query].present?
                 MoviesFacade.search_by_title(params[:query])
               else
