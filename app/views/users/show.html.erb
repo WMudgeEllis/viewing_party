@@ -1,11 +1,12 @@
 <h1>Welcome <%= current_user.email %>!</h1>
+
 <%= link_to "Log Out", logout_path, method: :delete %>
-
+<br><br>
 <%= button_to "Discover Movies", discover_path, method: :get %>
-
+<br><br>
 <section id= 'friend-search'>
   <%= form_with url: friendships_path, local: true do |form| %>
-    <%= form.label :find_friend, 'Find Friend' %>
+    <%= form.label :find_friend, 'Find Friend:' %>
     <%= form.text_field :find_friend %>
 
     <%= form.submit "Add" %>
@@ -18,7 +19,7 @@
 <% end  %>
 
 <% current_user.friends.each do |friend| %>
-  <p><%= friend.email %></p>
+  <%= friend.email %>
 <% end %>
 
 <section id='showings'>
