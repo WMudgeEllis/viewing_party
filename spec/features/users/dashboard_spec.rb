@@ -159,5 +159,27 @@ RSpec.describe 'user dashboard page' do
       expect(current_path).to eq(dashboard_path)
 
     end
+
+    it 'dosent allow user to add themselves' do
+      visit dashboard_path
+
+      fill_in :find_friend, with: @user.email
+      click_on "Add"
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("You can't add yourself as a friend!")
+    end
+
+    it 'dosent allow users to add duplicate friends' do
+      visit dashboard_path
+
+      @user.friendships.create!(friend_id: @user2.id)
+
+      fill_in :find_friend, with: @user2.email
+      click_on "Add"
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("This user is already your friend.")
+    end
   end
 end
