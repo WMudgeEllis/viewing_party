@@ -1,6 +1,6 @@
-class CastService < Service
+class CastService < APIService
   def self.cast_info(movie_id)
-    response = Faraday.get("#{URL + movie_id}/credits", { api_key: ENV['movie_key'] })
-    json_parse(response)
+    response = conn.get("#{URL + movie_id}/credits")
+    parse_json(response)
   end
 end
