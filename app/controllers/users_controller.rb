@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    dashboard_redirect
     @user = User.new
   end
 
