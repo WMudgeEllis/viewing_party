@@ -1,18 +1,12 @@
 class MovieService < Service
-
-  def self.movie_info(movie_id)
-    response = Faraday.get(URL + movie_id, { api_key: ENV['movie_key'] })
-    json_parse(response)
-  end
-
   def self.get_top_rated_movies(page)
-    response = conn.get("/3/movie/top_rated") do |f|
+    response = conn.get('/3/movie/top_rated') do |f|
       f.params['page'] = page
     end
     parse_json(response)[:results]
   end
 
-#facade?
+  # facade?
   def self.top_40_movies
     get_top_rated_movies(1) + get_top_rated_movies(2)
   end
@@ -24,11 +18,11 @@ class MovieService < Service
 
   def self.movie_info(movie_id)
     response = Faraday.get(URL + movie_id, { api_key: ENV['movie_key'] })
-   JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def self.conn
-    Faraday.new("https://api.themoviedb.org") do |f|
+    Faraday.new('https://api.themoviedb.org') do |f|
       f.params['api_key'] = ENV['movie_key']
     end
   end
@@ -36,5 +30,4 @@ class MovieService < Service
   def self.parse_json(response)
     JSON.parse(response.body, symbolize_names: true)
   end
-
 end

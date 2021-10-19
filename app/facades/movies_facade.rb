@@ -1,6 +1,4 @@
-
 class MoviesFacade
-    
   def self.reviews(movie_id)
     ReviewService.review_info(movie_id)[:results].map { |review| Review.new(review) }
   end
@@ -8,7 +6,7 @@ class MoviesFacade
   def self.first_10_cast(movie_id)
     CastService.cast_info(movie_id)[:cast].map { |cast| CastMember.new(cast) }[0..9]
   end
-    
+
   def self.top_40_movies
     movies = MovieService.top_40_movies
 
@@ -25,4 +23,3 @@ class MoviesFacade
     end
   end
 end
-
