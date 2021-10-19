@@ -1,4 +1,3 @@
-require "faraday"
 
 class ReviewService < APIService
   def self.review_info(movie_id)

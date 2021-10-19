@@ -1,4 +1,3 @@
-require "faraday"
 
 class CastService < APIService
   def self.cast_info(movie_id)
