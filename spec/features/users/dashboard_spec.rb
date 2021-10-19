@@ -134,10 +134,15 @@ RSpec.describe 'user dashboard page' do
       end
     end
 
-    it 'links to movie show page' do
-      UserShowing.create!(user: @user, showing: @showing, user_hosting: false)
+    it 'links to movie show page', :vcr do
+      UserShowing.create!(user: @user, showing: @showing, user_hosting: true)
+      visit dashboard_path
 
-      #dont know how to write the expect page
+      expect(page).to have_link(@showing.movie_title)
+
+      click_link @showing.movie_title
+
+      expect(current_path).to eq("/movies/#{@showing.movie_id}")
     end
   end
 end

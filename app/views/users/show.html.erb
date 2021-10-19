@@ -23,7 +23,7 @@
   <h3>Viewing Parties</h3>
   <% current_user.showings.each do |showing| %>
     <section id="showing-<%= showing.id %>">
-      <p><%= showing.movie_title %></p>
+      <p><%= link_to showing.movie_title, "/movies/#{showing.movie_id}" %></p>
       <p><%= showing.day %></p>
       <p><%= showing.start_time %></p>
       <p>Host: <%= showing.host %></p>
