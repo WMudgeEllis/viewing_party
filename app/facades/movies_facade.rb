@@ -8,7 +8,9 @@ class MoviesFacade
   end
 
   def self.top_40_movies
-    movies = MovieService.top_40_movies
+    page1 = MovieService.get_top_rated_movies(1)
+    page2 = MovieService.get_top_rated_movies(2)
+    movies = page1 + page2
 
     movies.map do |movie|
       Movie.new(movie)

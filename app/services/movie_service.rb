@@ -6,11 +6,6 @@ class MovieService < APIService
     parse_json(response)[:results]
   end
 
-  # facade?
-  def self.top_40_movies
-    get_top_rated_movies(1) + get_top_rated_movies(2)
-  end
-
   def self.search_movie_by_title(title)
     response = conn.get("/3/search/movie") do |f|
       f.params['query'] = title

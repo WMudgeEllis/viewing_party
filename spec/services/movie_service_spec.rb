@@ -13,10 +13,6 @@ RSpec.describe MovieService do
     expect(data[:vote_average]).to eq(7.0)
   end
 
-  it 'returns the top 40 movies', :vcr do
-    expect(MovieService.top_40_movies.count).to eq(40)
-  end
-
   it 'returns different movies for each page', :vcr do
     expect(MovieService.get_top_rated_movies(1)).to_not eq(MovieService.get_top_rated_movies(2))
   end
