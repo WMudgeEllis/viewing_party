@@ -1,3 +1,5 @@
+require "faraday"
+
 class APIService
   URL = 'https://api.themoviedb.org/3/movie/'.freeze
 
