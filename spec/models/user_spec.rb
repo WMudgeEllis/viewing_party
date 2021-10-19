@@ -32,6 +32,6 @@ RSpec.describe User do
     user3 = User.create!(email: 'zyx@123.com', password: '123')
     emails = [user.email, user2.email, user3.email]
 
-    expect(User.find_by_email(emails)).to eq([user, user2, user3])
+    expect(User.get_by_email(emails).sort).to eq([user, user2, user3].sort)
   end
 end
