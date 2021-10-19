@@ -10,6 +10,8 @@ RSpec.describe Showing do
     it {should validate_presence_of(:duration)}
     it {should validate_presence_of(:day)}
     it {should validate_presence_of(:start_time)}
+    it {should validate_presence_of(:movie_id)}
+    
   end
 
   before :each do
