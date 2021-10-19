@@ -25,6 +25,6 @@ class ShowingsController < ApplicationController
   private
 
   def showing_params
-    params.require(:showing).permit(:movie_title, :duration, :day, :start_time)
+    params.require(:showing).permit(:movie_title, :duration, :day, :start_time, :movie_id)
   end
 end
