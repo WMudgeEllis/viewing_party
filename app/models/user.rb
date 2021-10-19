@@ -13,7 +13,7 @@ class User < ApplicationRecord
     friends.pluck(:email).include?(friend_email)
   end
 
-  def self.find_by_email(emails)
+  def self.get_by_email(emails)
     where(email: emails)
   end
 end
