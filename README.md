@@ -22,7 +22,7 @@ for notes on deploying the project on a live system.
 Run:
 
 1.  ```bundle install```
-2.  ```rails db:{create,migrate}
+2.  ```rails db:{create,migrate}```
 
 And you should be good to go! Boot up your local server to see the app in action!
 
