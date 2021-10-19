@@ -1,4 +1,3 @@
-require "faraday"
 
 class MovieService < APIService
   def self.get_top_rated_movies(page)
