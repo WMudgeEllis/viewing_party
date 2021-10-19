@@ -1,7 +1,7 @@
 class MoviesFacade
   def self.reviews(movie_id)
     ReviewService.review_info(movie_id)[:results].map do |review|
-       Review.new(review)
+      Review.new(review)
     end
   end
 

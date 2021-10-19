@@ -1,4 +1,3 @@
-
 class ReviewService < APIService
   def self.review_info(movie_id)
     response = conn.get("#{URL + movie_id}/reviews")
