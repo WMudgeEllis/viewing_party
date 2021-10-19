@@ -42,4 +42,20 @@ RSpec.describe 'new showing page' do
     expect(@user2.showings).to_not eq([])
   end
 
+  it "doesn't create showing will small duration", :vcr do
+    fill_in 'showing[duration]', with: 10
+    fill_in 'showing[day]', with: '1/3/1993'
+    fill_in 'showing[start_time]', with: '1800'
+
+    click_button 'Create'
+
+    expect(page).to have_content("Party duration can't be less than the movie runtime")
+  end
+
+  it "doesn't create showing with no day/start_time", :vcr do
+    click_button 'Create'
+
+    expect(page).to have_content("Oops, something went wrong, please try again")
+  end
+
 end

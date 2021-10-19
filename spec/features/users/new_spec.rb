@@ -10,7 +10,6 @@ RSpec.describe 'new user registration page' do
   end
 
   it 'can make a new user' do
-    #wtf, why did this happen?
     fill_in 'user[email]', with: @email
     fill_in 'user[password]', with: @password
     fill_in 'user[confirm_password]', with: @password
@@ -24,7 +23,6 @@ RSpec.describe 'new user registration page' do
   end
 
   it 'can confirm the passwords' do
-    #wtf, why did this happen?
     fill_in 'user[email]', with: @email
     fill_in 'user[password]', with: @password
     fill_in 'user[confirm_password]', with: 'wrong password'
@@ -46,5 +44,15 @@ RSpec.describe 'new user registration page' do
 
     expect(current_path).to eq(registration_path)
     expect(page).to have_content('Email has already been taken')
+  end
+
+  it 'redirects to dashboard if logged in' do
+    user = User.create!(email: @email, password: @password)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit registration_path
+
+    expect(current_path).to eq(dashboard_path)
   end
 end

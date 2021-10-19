@@ -42,11 +42,11 @@ http_interactions:
       X-Cache:
       - Hit from cloudfront
       Via:
-      - 1.1 48a6ccbb0ddb052ab512a3422295bd39.cloudfront.net (CloudFront)
+      - 1.1 e7ff4a714a3b1f464db9c76ee954a565.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - U2FChA82za1elP_4zgu1M4VcwsHzq6OE3kOtKdFrtNxlqUNOjTJOYg==
+      - z6Azt8r4yyggU23CzjswvhFVQGlqV9-9D2nb1ttglSflwqmmwU9NMQ==
       Age:
       - '3396'
     body:
@@ -96,11 +96,11 @@ http_interactions:
       X-Cache:
       - Hit from cloudfront
       Via:
-      - 1.1 264cccdb967e804907074b11d3a83242.cloudfront.net (CloudFront)
+      - 1.1 c4fb40b7909e4dd897bba2e297b284e7.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - P_HXYZ8Za1kzgpe58z19gshKxUNGjl48GTf72y5pB8YbZqZjtHZ3PQ==
+      - P7rhVdI1ZwSUDxcU1lQnQr-p01uo_MYLjpzlNon_bMc7waTHxX-Kmg==
       Age:
       - '3395'
     body:

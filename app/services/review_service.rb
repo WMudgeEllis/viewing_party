@@ -1,6 +1,6 @@
-class ReviewService < Service
+class ReviewService < APIService
   def self.review_info(movie_id)
-    response = Faraday.get("#{URL + movie_id}/reviews", { api_key: ENV['movie_key'] })
-    json_parse(response)
+    response = conn.get("#{URL + movie_id}/reviews")
+    parse_json(response)
   end
 end
