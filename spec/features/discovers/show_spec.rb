@@ -11,8 +11,7 @@ RSpec.describe 'discover page' do
     expect(page.status_code).to eq(200)
   end
 
-  it 'shows a button to go to the movies page' do
-    expect(page).to have_button("Find Top Rated Movies")
+  it 'shows a button to go to the movies page', :vcr do
     click_button("Find Top Rated Movies")
     expect(current_path).to eq(movies_path)
   end
