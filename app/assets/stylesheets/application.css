@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   font-family: sans-serif;
   background-color: #FFEBCD;
-
+  text-align: center;
 }
 
 main {

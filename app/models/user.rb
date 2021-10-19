@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
 
   has_secure_password
+
+  def friend?(friend_email)
+    friends.pluck(:email).include?(friend_email)
+  end
 end
