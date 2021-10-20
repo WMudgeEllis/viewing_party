@@ -55,4 +55,10 @@ RSpec.describe 'new user registration page' do
 
     expect(current_path).to eq(dashboard_path)
   end
+
+  it 'has a link to log in' do
+    click_on 'Already have an account? Click here to log in'
+
+    expect(current_path).to eq(root_path)
+  end
 end
