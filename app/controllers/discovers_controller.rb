@@ -1,10 +1,6 @@
 class DiscoversController < ApplicationController
-
+  before_action :require_user
   def show
-    @movies = if params[:query].present?
-                MoviesFacade.search_by_title(params[:query])
-              else
-                MoviesFacade.top_40_movies
-              end
+    @movies = MoviesFacade.top_40_movies
   end
 end

@@ -145,7 +145,7 @@ RSpec.describe 'user dashboard page' do
       expect(current_path).to eq("/movies/#{@showing.movie_id}")
     end
 
-    it 'has a button to go to discover movies page' do
+    it 'has a button to go to discover movies page', :vcr do
       visit dashboard_path
 
       click_on "Discover Movies"

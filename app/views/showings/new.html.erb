@@ -5,7 +5,8 @@
   <%= form.hidden_field :movie_runtime, value: @movie.runtime %>
   <%= form.hidden_field :movie_title, value: @movie.title %>
   <p><%= form.label :duration, 'Duration' %>
-  <%= form.number_field :duration, value: @movie.runtime, min: 80 %></p>
+  <%= form.number_field :duration, value: @movie.runtime, min: @movie.runtime %></p>
+  <p> <%= form.label :day, 'Day' %>
   <%= form.text_field :day %></p>
   <p><%= form.label :start_time, 'Start Time' %>
   <%= form.text_field :start_time %></p>
