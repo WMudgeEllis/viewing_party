@@ -33,5 +33,6 @@ RSpec.describe User do
     emails = [user.email, user2.email, user3.email]
 
     expect(User.get_by_email(emails).sort).to eq([user, user2, user3].sort)
+
   end
 end

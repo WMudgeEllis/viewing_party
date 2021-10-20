@@ -1,3 +1,6 @@
 class DiscoversController < ApplicationController
-  def show; end
+  before_action :require_user
+  def show
+    @movies = MoviesFacade.top_40_movies
+  end
 end
