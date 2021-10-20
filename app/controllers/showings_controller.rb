@@ -10,7 +10,7 @@ class ShowingsController < ApplicationController
   def create
     new_showing = Showing.new(showing_params)
     friends = User.get_by_email(params.keys)
-    if showing_params[:duration] < params[:showing][:movie_runtime]
+    if showing_params[:duration].to_i < params[:showing][:movie_runtime].to_i
       flash[:error] = "Party duration can't be less than the movie runtime"
     elsif new_showing.save
       create_user_showings(new_showing, friends)

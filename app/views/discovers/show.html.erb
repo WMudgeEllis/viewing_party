@@ -1,8 +1,21 @@
 <h1>Discover Movies</h1>
+<div id="testing" >
+<%= link_to "", movies_path, remote: true %>
+<button id= "button">Find Top Rated Movies</button>
 
-<%= button_to "Find Top Rated Movies", movies_path, method: :get %>
 <br><br>
 <%= form_with(url: movies_path, local: true, method: :get) do |form| %>
   <%= form.text_field :query, label: "Search Movies by Title", placeholder: "ex: The Godfather" %>
   <%= form.submit "Search" %>
 <% end %>
+</div>
+
+
+<script>
+  $('#button').click(function(e){
+    e.preventDefault()
+    $('#button').hide()
+    $('#testing a').parent().append("<%= j render 'testing' %>")
+  })
+
+  </script>
