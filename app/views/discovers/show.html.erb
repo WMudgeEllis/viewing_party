@@ -1,7 +1,7 @@
 <h1>Discover Movies</h1>
 <div id="testing" >
-<%= link_to "Find Top Rated Movies", movies_path, remote: true %>
-
+<%= link_to "", movies_path, remote: true %>
+<button id= "button">Find Top Rated Movies</button>
 
 <br><br>
 <%= form_with(url: movies_path, local: true, method: :get) do |form| %>
@@ -10,6 +10,12 @@
 <% end %>
 </div>
 
+
 <script>
-  $('#testing a').parent().append("<%= j render 'testing' %>")
+  $('#button').click(function(e){
+    e.preventDefault()
+    $('#button').hide()
+    $('#testing a').parent().append("<%= j render 'testing' %>")
+  })
+
   </script>
