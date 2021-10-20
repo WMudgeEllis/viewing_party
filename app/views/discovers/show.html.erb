@@ -1,6 +1,6 @@
 <h1>Discover Movies</h1>
 <div id="testing" >
-<%= link_to "", movies_path, remote: true %>
+  <%= link_to "", movies_path, remote: true %>
 <button id= "button">Find Top Rated Movies</button>
 
 <br><br>
@@ -11,11 +11,13 @@
 </div>
 
 
+
 <script>
-  $('#button').click(function(e){
-    e.preventDefault()
+  <!-- listening for button to be clicked on -->
+  $('#button').click(function(){
+    <!-- hide button after clicking -->
     $('#button').hide()
+    <!-- renders partial -->
     $('#testing a').parent().append("<%= j render 'testing' %>")
   })
-
   </script>
