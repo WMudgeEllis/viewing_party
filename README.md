@@ -31,10 +31,6 @@ And you should be good to go! Visit localhost:3000 to see the app in action!
 
 The tests run on RSpec so a ```bundle exec rspec``` is all you need to run the testing suite.
 
-## Deployment
-
-Add additional notes to deploy this on a live system
-
 ## Built With
 
   - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
